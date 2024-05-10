@@ -20,10 +20,16 @@ builds:
       - arm64
     ldflags:
       - "-s -w"
+      - "-extldflags=-static"
       - "-X '{{ .ProjectName }}/cmd.BuildVersion={{ .Version }}'"
       - "-X '{{ .ProjectName }}/cmd.BuildDate={{ .Date }}'"
       - "-X '{{ .ProjectName }}/cmd.BuildHash={{ .Commit }}'"
       - "-X '{{ .ProjectName }}/cmd.BuildEnvironment={{ .Env.GITHUB_ACTOR }}@{{ .Env.RUNNER_OS }}_{{ .Env.RUNNER_ARCH }}'"
+    tags:
+      - osusergo
+      - netgo
+    env:
+      - CGO_ENABLED=0
 
 archives:
   - format: tar.gz
@@ -47,7 +53,7 @@ dockers:
       - "--platform=linux/arm64"
 
 docker_manifests:
-- name_template: 'ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}'
-  image_templates:
-    - 'ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-amd64'
-    - 'ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-arm64'
+  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}"
+    image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-arm64"
