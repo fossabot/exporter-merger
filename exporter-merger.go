@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/6RiverSystems/exporter-merger/cmd"
+	"github.com/ne-bknn/exporter-merger/internal"
 	log "github.com/sirupsen/logrus"
 )
 
 func main() {
-	if err := cmd.NewRootCommand().Execute(); err != nil {
+	if err := internal.NewRootCommand().Execute(); err != nil {
 		log.Fatal(err)
 	}
 }

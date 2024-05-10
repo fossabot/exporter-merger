@@ -1,4 +1,4 @@
-PACKAGE=github.com/6RiverSystems/exporter-merger
+PACKAGE=github.com/ne-bknn/exporter-merger
 BIN=exporter-merger
 BUILD_VERSION=$(shell git describe --always --dirty --tags | tr '-' '.' )
 BUILD_DATE=$(shell date)

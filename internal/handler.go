@@ -1,4 +1,4 @@
-package cmd
+package internal
 
 import (
 	"io"
@@ -67,7 +67,7 @@ func (h Handler) Merge(w io.Writer) {
 		}(exporter)
 	}
 	wg.Wait()
-	enc := expfmt.NewEncoder(w, expfmt.FmtText)
+	enc := expfmt.NewEncoder(w, expfmt.NewFormat(expfmt.TypeTextPlain))
 	for mf := range mfs {
 		err := enc.Encode(mfs[mf])
 		if err != nil {

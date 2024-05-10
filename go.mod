@@ -1,4 +1,4 @@
-module github.com/6RiverSystems/exporter-merger
+module github.com/ne-bknn/exporter-merger
 
 go 1.14
 
