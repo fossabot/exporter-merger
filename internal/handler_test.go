@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/prometheus/common/expfmt"
-	"github.com/rebuy-de/exporter-merger/cmd"
+	"github.com/ne-bknn/exporter-merger/internal"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -46,12 +46,16 @@ func TestHandler(t *testing.T) {
 		"bar{} 4\nconflict 5\nshared{meh=\"b\"} 6")
 	defer deferrer()
 
-	exporters := []string{
-		te1,
-		te2,
+	exporters := []internal.Exporter{
+        internal.Exporter{
+            URL: te1,
+        },
+        internal.Exporter{
+            URL: te2,
+        },
 	}
 
-	server := httptest.NewServer(cmd.Handler{
+	server := httptest.NewServer(internal.Handler{
 		Exporters: exporters,
 	})
 	defer server.Close()
