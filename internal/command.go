@@ -62,22 +62,22 @@ func (app *App) Bind(cmd *cobra.Command) {
 	cmd.PersistentFlags().Int(
 		"listen-port", 8080,
 		"Listen port for the HTTP server. (ENV:MERGER_PORT)")
-	app.viper.BindPFlag("port", cmd.PersistentFlags().Lookup("listen-port"))
+	_ = app.viper.BindPFlag("port", cmd.PersistentFlags().Lookup("listen-port"))
 
 	cmd.PersistentFlags().String(
 		"listen-ip", "0.0.0.0",
 		"Listen IP for the HTTP server.(ENV:MERGER_IP)")
-	app.viper.BindPFlag("ip", cmd.PersistentFlags().Lookup("listen-ip"))
+	_ = app.viper.BindPFlag("ip", cmd.PersistentFlags().Lookup("listen-ip"))
 
 	cmd.PersistentFlags().Int(
 		"exporters-timeout", 10,
 		"HTTP client timeout for connecting to exporters. (ENV:MERGER_EXPORTERSTIMEOUT)")
-	app.viper.BindPFlag("exporterstimeout", cmd.PersistentFlags().Lookup("exporters-timeout"))
+	_ = app.viper.BindPFlag("exporterstimeout", cmd.PersistentFlags().Lookup("exporters-timeout"))
 
 	cmd.PersistentFlags().BoolP(
 		"verbose", "v", false,
 		"Include debug messages to output (ENV:MERGER_VERBOSE)")
-	app.viper.BindPFlag("verbose", cmd.PersistentFlags().Lookup("verbose"))
+	_ = app.viper.BindPFlag("verbose", cmd.PersistentFlags().Lookup("verbose"))
 
 }
 

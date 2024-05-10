@@ -8,8 +8,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/prometheus/common/expfmt"
 	"github.com/ne-bknn/exporter-merger/internal"
+	"github.com/prometheus/common/expfmt"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -47,12 +47,12 @@ func TestHandler(t *testing.T) {
 	defer deferrer()
 
 	exporters := []internal.Exporter{
-        internal.Exporter{
-            URL: te1,
-        },
-        internal.Exporter{
-            URL: te2,
-        },
+		internal.Exporter{
+			URL: te1,
+		},
+		internal.Exporter{
+			URL: te2,
+		},
 	}
 
 	server := httptest.NewServer(internal.Handler{
@@ -85,7 +85,7 @@ func TestHandler(t *testing.T) {
 	// }
 
 	eFmt := new(expfmt.TextParser)
-	part, err := eFmt.TextToMetricFamilies(resp.Body)
+	part, _ := eFmt.TextToMetricFamilies(resp.Body)
 
 	fooWanted := 1.0
 	var foo float64
