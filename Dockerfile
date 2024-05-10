@@ -1,5 +1,5 @@
-FROM golang:1.14-alpine AS build-env
-MAINTAINER Aaron France "afrance@6river.com"
+FROM golang:1.22-alpine AS build-env
+MAINTAINER Timofey Bakunin "bakunin.t@protonmail.com"
 
 WORKDIR /app
 
@@ -8,8 +8,7 @@ COPY . .
 RUN go mod download
 RUN make build
 
-# final stage
-FROM alpine
+FROM alpine as app
 WORKDIR /app
 COPY --from=build-env /app/exporter-merger /app/exporter-merger
 ENTRYPOINT /app/exporter-merger

@@ -1,0 +1,3 @@
+FROM gcr.io/distroless/static
+COPY exporter-merger /exporter-merger
+ENTRYPOINT ["/exporter-merger"]

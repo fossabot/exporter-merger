@@ -1,0 +1,53 @@
+---
+project_name: exporter-merger
+release:
+  github:
+    owner: ne-bknn
+    name: exporter-merger
+
+upx:
+  - enabled: true
+    compress: "3"
+    brute: false
+
+builds:
+  - id: exporter-merger
+    main: ./exporter-merger.go
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - "-s -w"
+      - "-X '{{ .ProjectName }}/cmd.BuildVersion={{ .Version }}'"
+      - "-X '{{ .ProjectName }}/cmd.BuildDate={{ .Date }}'"
+      - "-X '{{ .ProjectName }}/cmd.BuildHash={{ .Commit }}'"
+      - "-X '{{ .ProjectName }}/cmd.BuildEnvironment={{ .Env.GITHUB_ACTOR }}@{{ .Env.RUNNER_OS }}_{{ .Env.RUNNER_ARCH }}'"
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+dockers:
+  - image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-amd64"
+    dockerfile: Dockerfile.goreleaser
+    use: buildx
+    build_flag_templates:
+      - "--pull"
+      - "--platform=linux/amd64"
+
+  - image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-arm64"
+    dockerfile: Dockerfile.goreleaser
+    use: buildx
+    build_flag_templates:
+      - "--pull"
+      - "--platform=linux/arm64"
+
+docker_manifests:
+- name_template: 'ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}'
+  image_templates:
+    - 'ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-amd64'
+    - 'ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{ .ProjectName }}:{{ .Tag }}-arm64'
