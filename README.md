@@ -1,8 +1,9 @@
 # exporter-merger
 
-[![Build Status](https://travis-ci.org/rebuy-de/exporter-merger.svg?branch=master)](https://travis-ci.org/rebuy-de/exporter-merger)
+[![Build Status](https://github.com/ne-bknn/exporter-merger/actions/workflows/build.yml/badge.svg)]()
+[![codecov](https://codecov.io/gh/ne-bknn/exporter-merger/branch/master/graph/badge.svg?token=A85S07L6P5)](https://codecov.io/gh/ne-bknn/exporter-merger)
 [![license](https://img.shields.io/github/license/rebuy-de/exporter-merger.svg)]()
-[![GitHub release](https://img.shields.io/github/release/rebuy-de/exporter-merger.svg)]()
+[![GitHub release](https://img.shields.io/github/release/ne-bknn/exporter-merger.svg)]()
 
 Merges Prometheus metrics from multiple sources.
 
