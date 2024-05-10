@@ -17,7 +17,7 @@ type Version struct {
 func GetVersion() *Version {
     return &Version{
         BuildVersion: BuildVersion,
-        BuildDate: BuildHash,
+        BuildDate: BuildDate,
         BuildHash: BuildHash,
         BuildEnvironment: BuildEnvironment,
     }
