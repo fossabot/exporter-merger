@@ -19,12 +19,12 @@ builds:
       - amd64
       - arm64
     ldflags:
-      - "-s -w"
-      - "-extldflags=-static"
-      - "-X '{{ .ProjectName }}/cmd.BuildVersion={{ .Version }}'"
-      - "-X '{{ .ProjectName }}/cmd.BuildDate={{ .Date }}'"
-      - "-X '{{ .ProjectName }}/cmd.BuildHash={{ .Commit }}'"
-      - "-X '{{ .ProjectName }}/cmd.BuildEnvironment={{ .Env.GITHUB_ACTOR }}@{{ .Env.RUNNER_OS }}_{{ .Env.RUNNER_ARCH }}'"
+      - -s -w
+      - -extldflags=-static
+      - -X github.com/{{ .Env.GITHUB_REPOSITORY_OWNER}}/{{ .ProjectName }}/internal.BuildVersion={{ .Version }}
+      - -X github.com/{{ .Env.GITHUB_REPOSITORY_OWNER}}/{{ .ProjectName }}/internal.BuildDate={{ .Date }}
+      - -X github.com/{{ .Env.GITHUB_REPOSITORY_OWNER}}/{{ .ProjectName }}/internal.BuildHash={{ .Commit }}
+      - -X github.com/{{ .Env.GITHUB_REPOSITORY_OWNER}}/{{ .ProjectName }}/internal.BuildEnvironment={{ .Env.GITHUB_ACTOR }}@{{ .Env.RUNNER_OS }}_{{ .Env.RUNNER_ARCH }}
     tags:
       - osusergo
       - netgo

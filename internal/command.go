@@ -95,3 +95,19 @@ func (app *App) run(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 }
+
+func NewVersionCommand() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "version",
+		Short: "shows version of this application",
+		Run: func(cmd *cobra.Command, args []string) {
+            version := GetVersion()
+			fmt.Printf("version:     %s\n", version.BuildVersion)
+			fmt.Printf("build date:  %s\n", version.BuildDate)
+			fmt.Printf("scm hash:    %s\n", version.BuildHash)
+			fmt.Printf("environment: %s\n", version.BuildEnvironment)
+		},
+	}
+
+	return cmd
+}
