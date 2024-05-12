@@ -4,8 +4,7 @@ name: build
 on:  # yamllint disable-line rule:truthy
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+-*"
-      - "v[0-9]+.[0-9]+-*"
+      - "v*"
   workflow_dispatch:
 
 permissions:
