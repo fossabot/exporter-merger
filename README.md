@@ -1,6 +1,7 @@
 # exporter-merger
 
-[![Build Status](https://github.com/ne-bknn/exporter-merger/actions/workflows/build.yml/badge.svg)]()
+[![Build Status](https://github.com/ne-bknn/exporter-merger/actions/workflows/build.yml/badge.svg)][![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fne-bknn%2Fexporter-merger.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fne-bknn%2Fexporter-merger?ref=badge_shield)
+()
 [![codecov](https://codecov.io/gh/ne-bknn/exporter-merger/branch/master/graph/badge.svg?token=A85S07L6P5)](https://codecov.io/gh/ne-bknn/exporter-merger)
 [![license](https://img.shields.io/github/license/rebuy-de/exporter-merger.svg)]()
 [![GitHub release](https://img.shields.io/github/release/ne-bknn/exporter-merger.svg)]()
@@ -108,3 +109,7 @@ spec:
 * Allow transforming of metrics from backend exporters.
   * eg add a prefix to the metric names
 * Allow dynamic adding of exporters.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fne-bknn%2Fexporter-merger.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fne-bknn%2Fexporter-merger?ref=badge_large)
